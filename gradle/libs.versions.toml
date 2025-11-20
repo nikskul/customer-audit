@@ -1,0 +1,8 @@
+[versions]
+junit-jupiter = '5.13.4'
+spring-boot = '3.5.7'
+
+[libraries]
+junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter', version.ref = 'junit-jupiter' }
+spring-boot = { module = 'org.springframework.boot:spring-boot', version.ref = 'spring-boot' }
+spring-boot-log4j2 = { module = 'org.springframework.boot:spring-boot-starter-log4j2', version.ref = 'spring-boot' }

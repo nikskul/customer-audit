@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'ru.nikskul'
+version = '1.0-SNAPSHOT'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(libs.spring.boot)
+    implementation(libs.spring.boot.log4j2)
+
+    testImplementation(libs.junit.jupiter)
+}
+
+test {
+    useJUnitPlatform()
+}
