@@ -2,9 +2,8 @@ plugins {
     id 'java'
 }
 
-group = 'ru.nikskul'
+group = 'ru.nikskul.customer.audit'
 version = '1.0-SNAPSHOT'
-
 
 
 repositories {
@@ -12,10 +11,22 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.spring.boot)
+    // Spring
+    implementation(libs.spring.boot.web) {
+        // use it for every Spring group that provide module logging
+        exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
+    }
+//    implementation(libs.spring.boot.data) {exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+
+    // Logging
     implementation(libs.spring.boot.log4j2)
 
+    // Test
+    testImplementation(libs.spring.boot.test){
+        exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
+    }
     testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 test {

@@ -1,8 +1,11 @@
 package ru.nikskul.customer.audit;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class ApplicationBootstrap {
     public static void main(String[] args) {
-        // TODO: start
+        SpringApplication.run(ApplicationBootstrap.class, args);
     }
 }
