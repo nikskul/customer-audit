@@ -1,12 +1,18 @@
 [versions]
 junit-jupiter = '5.13.4'
 spring-boot = '3.5.7'
+testcontainers = '1.20.6'
+postgresql = '42.6.0'
 
 [libraries]
 spring-boot-web = { module = 'org.springframework.boot:spring-boot-starter-web', version.ref = 'spring-boot' }
 spring-boot-data = { module = 'org.springframework.boot:spring-boot-starter-data-jpa', version.ref = 'spring-boot' }
-spring-boot-log4j2 = {  module = 'org.springframework.boot:spring-boot-starter-log4j2', version.ref = 'spring-boot' }
+spring-boot-log4j2 = { module = 'org.springframework.boot:spring-boot-starter-log4j2', version.ref = 'spring-boot' }
 
-spring-boot-test = {  module = 'org.springframework.boot:spring-boot-starter-test', version.ref = 'spring-boot' }
+spring-boot-test = { module = 'org.springframework.boot:spring-boot-starter-test', version.ref = 'spring-boot' }
 junit-jupiter = { module = 'org.junit.jupiter:junit-jupiter', version.ref = 'junit-jupiter' }
 junit-platform-launcher = { module = 'org.junit.platform:junit-platform-launcher' }
+
+testcontainers = { module = 'org.testcontainers:postgresql', version.ref = 'testcontainers' }
+
+postgresql = { module = 'org.postgresql:postgresql', version.ref = 'postgresql'}

@@ -1,0 +1,10 @@
+@startuml
+left to right direction
+:User: --> (Insert Customer)
+:User: --> (View Customer List)
+:User: --> (Edit Customer)
+
+(Edit Customer) <.. (Edit Phone) : extend
+(Edit Customer) <.. (Edit Customer Name) : extend
+(Edit Customer) <.. (Add spend) : extend
+@enduml

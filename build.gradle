@@ -16,7 +16,10 @@ dependencies {
         // use it for every Spring group that provide module logging
         exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
     }
-//    implementation(libs.spring.boot.data) {exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+    implementation(libs.spring.boot.data) {exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+
+    // DB Driver
+    runtimeOnly(libs.postgresql)
 
     // Logging
     implementation(libs.spring.boot.log4j2)
@@ -25,6 +28,7 @@ dependencies {
     testImplementation(libs.spring.boot.test){
         exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
     }
+    testImplementation(libs.testcontainers)
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)
 }

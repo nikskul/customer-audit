@@ -1,0 +1,59 @@
+@startuml
+left to right direction
+
+' комментарий
+!function $comment($value) !return "<i><color:#efefef><&media-record></color>" + $value + "</i>"
+
+' тип данных
+!function $type($value) !return "<color:#006400>" + $value + "</color>"
+
+' название столбца
+!function $plain_name($value, $isRequired="false")
+!if ($isRequired == "true")
+!return "<color:#ff0000>*</color> " + $value
+!else
+!return "<color:#000000>-</color> " + $value
+!endif
+!endfunction
+
+' название первичного ключа
+!function $primary_key_name($value) !return "<b><color:#b8861b><&key></color> " + $value + "</b>"
+
+' название вторичного ключа
+!function $foreign_key_name($value, $isRequired="false")
+!if ($isRequired == "true")
+!return "<color:#ff0000>*</color> <color:#aaaaaa><&key></color> " + $value
+!else
+!return "<color:#000000>-</color> <color:#aaaaaa><&key></color> " + $value
+!endif
+!endfunction
+
+' столбец
+!function $column($nameValue, $typeValue, $commentValue)
+!return $nameValue + ": " + $type($typeValue) + $comment($commentValue)
+!endfunction
+
+' таблица
+!function $table($tableName) !return "entity " + $tableName + " << (T, white) >>"
+
+
+$table(customer) {
+    $column( $primary_key_name(id), "bigint", "Identity" )
+    $column( $plain_name("full_name", true), "text", "Customer name" )
+    $column( $plain_name(phone, true), "text", "Customer phone number" )
+    $column( $plain_name(spent, true), "numeric(18,2)", "Amount of spend" )
+}
+
+
+
+
+map Легенда {
+    <color:#b8861b><&key></color> => Первичный ключ
+    <color:#ff0000>*</color> <color:#aaaaaa><&key></color> => Обязательный внешний ключ
+    <color:#000000>-</color> <color:#aaaaaa><&key></color> => Необязательный внешний ключ
+    <color:#ff0000>*</color> => Не nullable столбец
+    <color:#000000>-</color> => Nullable столбец
+    name => Название столбца
+    <color:#006400>number</color> => Тип столбца
+}
+@enduml
