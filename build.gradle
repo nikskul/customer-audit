@@ -10,24 +10,22 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    // Spring
-    implementation(libs.spring.boot.web) {
-        // use it for every Spring group that provide module logging
-        exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
+configurations {
+    configureEach {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
-    implementation(libs.spring.boot.data) {exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging') }
+}
 
-    // DB Driver
-    runtimeOnly(libs.postgresql)
-
-    // Logging
+dependencies {
+    implementation(libs.spring.boot.web)
+    implementation(libs.spring.boot.data)
     implementation(libs.spring.boot.log4j2)
 
-    // Test
-    testImplementation(libs.spring.boot.test){
-        exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
-    }
+    implementation(libs.spring.doc)
+
+    runtimeOnly(libs.postgresql)
+
+    testImplementation(libs.spring.boot.test)
     testImplementation(libs.testcontainers)
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)
