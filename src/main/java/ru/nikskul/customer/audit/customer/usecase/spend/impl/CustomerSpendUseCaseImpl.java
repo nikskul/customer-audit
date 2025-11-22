@@ -4,8 +4,7 @@ import org.springframework.stereotype.Component;
 import ru.nikskul.customer.audit.customer.repository._itf.CustomerRepository;
 import ru.nikskul.customer.audit.customer.usecase.spend._itf.CustomerSpendUseCase;
 import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
-
-import java.math.BigDecimal;
+import ru.nikskul.customer.audit.spend.request.impl.SpendRequest;
 
 @Component
 public class CustomerSpendUseCaseImpl implements CustomerSpendUseCase {
@@ -17,8 +16,8 @@ public class CustomerSpendUseCaseImpl implements CustomerSpendUseCase {
     }
 
     @Override
-    public OperationResult spend(BigDecimal value) {
-        repository.addSpend(value);
+    public OperationResult spend(SpendRequest spendRequest) {
+        repository.addSpend(spendRequest.customerId(), spendRequest.value());
         return OperationResult.ok();
     }
 }

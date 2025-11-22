@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 import ru.nikskul.customer.audit.customer.dto.converter._itf.CustomerDtoEntityConverter;
 import ru.nikskul.customer.audit.customer.dto.impl.CustomerDto;
 import ru.nikskul.customer.audit.customer.filter.CustomerFilter;
-import ru.nikskul.customer.audit.search.params.impl.SearchParams;
 import ru.nikskul.customer.audit.customer.repository._itf.CustomerRepository;
 import ru.nikskul.customer.audit.customer.usecase.search._itf.CustomerSearchUseCase;
+import ru.nikskul.customer.audit.search.params.impl.SearchParams;
 
 import java.util.List;
 

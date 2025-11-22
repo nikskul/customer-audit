@@ -3,16 +3,16 @@ package ru.nikskul.customer.audit.customer.service.impl;
 import org.springframework.stereotype.Service;
 import ru.nikskul.customer.audit.customer.dto.impl.CustomerDto;
 import ru.nikskul.customer.audit.customer.filter.CustomerFilter;
-import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
-import ru.nikskul.customer.audit.search.params.impl.SearchParams;
 import ru.nikskul.customer.audit.customer.service._itf.CustomerService;
 import ru.nikskul.customer.audit.customer.service._itf.CustomerSpendService;
 import ru.nikskul.customer.audit.customer.usecase.change.name._itf.CustomerChangeNameUseCase;
 import ru.nikskul.customer.audit.customer.usecase.create._itf.CustomerCreateUseCase;
 import ru.nikskul.customer.audit.customer.usecase.search._itf.CustomerSearchUseCase;
 import ru.nikskul.customer.audit.customer.usecase.spend._itf.CustomerSpendUseCase;
+import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
+import ru.nikskul.customer.audit.search.params.impl.SearchParams;
+import ru.nikskul.customer.audit.spend.request.impl.SpendRequest;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -52,7 +52,7 @@ public class SimpleCustomerService
     }
 
     @Override
-    public OperationResult spend(BigDecimal value) {
-        return spendUseCase.spend(value);
+    public OperationResult spend(SpendRequest spendRequest) {
+        return spendUseCase.spend(spendRequest);
     }
 }

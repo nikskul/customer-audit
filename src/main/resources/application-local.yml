@@ -6,3 +6,10 @@ spring:
     url: jdbc:postgresql://[::1]:5432/${spring.application.name}
     username: application
     password: postgres
+  flyway:
+    url: jdbc:postgresql://[::1]:5432/${spring.application.name}
+    user: application
+    password: postgres
+    loggers: log4j2
+  jpa:
+    show-sql: true

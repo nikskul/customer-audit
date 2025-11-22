@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.nikskul.customer.audit.customer.dto.impl.CustomerDto;
 import ru.nikskul.customer.audit.customer.filter.CustomerFilter;
+import ru.nikskul.customer.audit.customer.service._itf.CustomerService;
 import ru.nikskul.customer.audit.customer.service._itf.CustomerSpendService;
 import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
 import ru.nikskul.customer.audit.search.params.impl.SearchParams;
-import ru.nikskul.customer.audit.customer.service._itf.CustomerService;
+import ru.nikskul.customer.audit.spend.request.impl.SpendRequest;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -35,14 +35,14 @@ public class CustomerController {
         return service.create(customer);
     }
 
-    @PatchMapping("/fullName")
+    @PatchMapping("/change-full-name")
     public OperationResult changeName(@RequestBody CustomerDto customerDto) {
         return service.changeName(customerDto);
     }
 
     @PostMapping("/add-spend")
-    public OperationResult addSpent(@RequestBody BigDecimal value) {
-        return spendService.spend(value);
+    public OperationResult addSpent(@RequestBody SpendRequest request) {
+        return spendService.spend(request);
     }
 
     @PostMapping("/search")

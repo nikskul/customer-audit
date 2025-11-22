@@ -32,7 +32,8 @@ public interface CustomerRepository
     @Query("""
          UPDATE CustomerEntity e
          SET e.spent = e.spent + :value
+         WHERE e.id = :id
         """)
     @Modifying
-    void addSpend(BigDecimal value);
+    void addSpend(Long id, BigDecimal value);
 }

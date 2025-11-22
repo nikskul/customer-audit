@@ -1,5 +1,7 @@
 package ru.nikskul.customer.audit._itf.entity;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Version;
@@ -14,6 +16,7 @@ import java.util.Objects;
 public abstract class DomainEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Version

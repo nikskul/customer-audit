@@ -1,9 +1,8 @@
 package ru.nikskul.customer.audit.customer.usecase.spend._itf;
 
 import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
-
-import java.math.BigDecimal;
+import ru.nikskul.customer.audit.spend.request.impl.SpendRequest;
 
 public interface CustomerSpendUseCase {
-    OperationResult spend(BigDecimal value);
+    OperationResult spend(SpendRequest spendRequest);
 }

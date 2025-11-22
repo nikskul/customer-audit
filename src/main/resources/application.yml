@@ -6,11 +6,18 @@ spring:
     name: customer_audit
   jpa:
     open-in-view: off
+    hibernate:
+      ddl-auto: validate
   datasource:
     url: "env:DATABASE_URL"
     username: "env:DATABASE_USERNAME"
     password: "env:DATABASE_PASSWORD"
     driver-class-name: org.postgresql.Driver
+  flyway:
+    url: "env:DATABASE_URL"
+    user: "env:DATABASE_USERNAME"
+    password: "env:DATABASE_PASSWORD"
+
 
 phone:
-  pattern: '\\+7[0-9]{10}'
+  pattern: "\\+7[0-9]{10}"

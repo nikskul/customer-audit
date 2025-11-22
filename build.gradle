@@ -24,6 +24,7 @@ dependencies {
     implementation(libs.spring.doc)
 
     runtimeOnly(libs.postgresql)
+    implementation(libs.flyway)
 
     testImplementation(libs.spring.boot.test)
     testImplementation(libs.testcontainers)
