@@ -8,8 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.nikskul.customer.audit.customer.dto.impl.CustomerDto;
 import ru.nikskul.customer.audit.customer.entity.CustomerEntity;
-import ru.nikskul.customer.audit.customer.filter.CustomerFilter;
-import ru.nikskul.customer.audit.search.params.impl.SearchParams;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,8 +16,8 @@ import java.util.List;
 public interface CustomerRepository
     extends JpaRepository<CustomerEntity, Long> {
 
-    @NativeQuery("SELECT * from customer_search(:params)")
-    List<CustomerEntity> searchByParams(SearchParams<CustomerFilter> params);
+    @NativeQuery("SELECT * FROM customer_search((:params)::json)")
+    List<CustomerEntity> searchByParams(@Param("params") String params);
 
     @Query("""
          UPDATE CustomerEntity e
