@@ -1,6 +1,7 @@
 package ru.nikskul.customer.audit.customer.usecase.change.name.impl;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import ru.nikskul.customer.audit.customer.dto.impl.CustomerDto;
 import ru.nikskul.customer.audit.customer.repository._itf.CustomerRepository;
 import ru.nikskul.customer.audit.customer.usecase.change.name._itf.CustomerChangeNameUseCase;
@@ -19,6 +20,7 @@ public class CustomerChangeNameUseCaseImpl
     }
 
     @Override
+    @Transactional
     public OperationResult exec(CustomerDto customerDto) {
         repository.changeName(customerDto);
         return OperationResult.ok();

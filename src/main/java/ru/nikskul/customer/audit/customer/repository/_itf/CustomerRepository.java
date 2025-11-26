@@ -19,19 +19,23 @@ public interface CustomerRepository
     @NativeQuery("SELECT * FROM customer_search((:params)::json)")
     List<CustomerEntity> searchByParams(@Param("params") String params);
 
-    @Query("""
+    @Query(value = """
          UPDATE CustomerEntity e
-         SET e.fullName = ?#{dto.fullName()}
-         WHERE e.id = ?#{dto.id()}
+         SET e.fullName = :#{#dto.fullName()},
+             e.version = (e.version + 1),
+             e.updatedAt = :#{(T(java.time.Instant).now())}
+         WHERE e.id = :#{#dto.id()}
         """)
     @Modifying
     void changeName(@Param("dto") CustomerDto dto);
 
     @Query("""
          UPDATE CustomerEntity e
-         SET e.spent = e.spent + :value
+         SET e.spent = e.spent + :value,
+             e.version = (e.version + 1),
+             e.updatedAt = :#{(T(java.time.Instant).now())}
          WHERE e.id = :id
         """)
     @Modifying
-    void addSpend(Long id, BigDecimal value);
+    void addSpend(@Param("id") Long id, @Param("value") BigDecimal value);
 }

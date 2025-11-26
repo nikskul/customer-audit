@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.nikskul.customer.audit.customer.dto.impl.CustomerDto;
 import ru.nikskul.customer.audit.customer.repository._itf.CustomerRepository;
 import ru.nikskul.customer.audit.customer.usecase.create._itf.CustomerCreateUseCase;
-import ru.nikskul.customer.audit.integration.BaseIntegrationTest;
+import ru.nikskul.customer.audit.integration.customer.usecase._itf.BaseIntegrationTest;
 import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
 
 

@@ -10,7 +10,7 @@ public record SearchParams<T>(
     Map<String, String> sorting
 ) {
     public SearchParams(T filter) {
-        this(filter, 0, 10, new HashMap<>());
+        this(filter, 0L, 10, new HashMap<>());
     }
 
     public SearchParams(T filter, long key, int limit) {

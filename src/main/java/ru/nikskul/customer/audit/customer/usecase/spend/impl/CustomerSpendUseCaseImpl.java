@@ -1,6 +1,7 @@
 package ru.nikskul.customer.audit.customer.usecase.spend.impl;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import ru.nikskul.customer.audit.customer.repository._itf.CustomerRepository;
 import ru.nikskul.customer.audit.customer.usecase.spend._itf.CustomerSpendUseCase;
 import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
@@ -16,6 +17,7 @@ public class CustomerSpendUseCaseImpl implements CustomerSpendUseCase {
     }
 
     @Override
+    @Transactional
     public OperationResult spend(SpendRequest spendRequest) {
         repository.addSpend(spendRequest.customerId(), spendRequest.value());
         return OperationResult.ok();

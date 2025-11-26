@@ -2,7 +2,7 @@ package ru.nikskul.customer.audit.integration.customer.usecase.search;
 
 import org.junit.jupiter.params.provider.Arguments;
 import ru.nikskul.customer.audit.customer.filter.CustomerFilter;
-import ru.nikskul.customer.audit.integration.BaseIntegrationTest;
+import ru.nikskul.customer.audit.integration.customer.usecase._itf.BaseIntegrationTest;
 import ru.nikskul.customer.audit.search.params.impl.SearchParams;
 
 import java.util.List;

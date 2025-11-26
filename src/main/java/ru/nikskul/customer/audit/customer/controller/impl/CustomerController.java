@@ -1,5 +1,7 @@
 package ru.nikskul.customer.audit.customer.controller.impl;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,7 @@ import ru.nikskul.customer.audit.spend.request.impl.SpendRequest;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1/customer")
 public class CustomerController {
 
@@ -46,7 +49,9 @@ public class CustomerController {
     }
 
     @PostMapping("/search")
-    public List<CustomerDto> search(SearchParams<CustomerFilter> params) {
-        return service.listCustomer(params);
+    public ResponseEntity<List<CustomerDto>> search(
+        @RequestBody SearchParams<CustomerFilter> params
+    ) {
+        return ResponseEntity.ok(service.listCustomer(params));
     }
 }

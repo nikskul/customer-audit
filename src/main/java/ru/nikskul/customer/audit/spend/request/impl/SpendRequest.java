@@ -6,4 +6,7 @@ public record SpendRequest(
     Long customerId,
     BigDecimal value
 ) {
+    public SpendRequest(Long id, double value) {
+        this(id, BigDecimal.valueOf(value));
+    }
 }
