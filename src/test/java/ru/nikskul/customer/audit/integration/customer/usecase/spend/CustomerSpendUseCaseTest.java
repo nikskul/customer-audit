@@ -1,7 +1,5 @@
 package ru.nikskul.customer.audit.integration.customer.usecase.spend;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,8 @@ import ru.nikskul.customer.audit.spend.request.impl.SpendRequest;
 
 import java.time.Instant;
 import java.time.ZoneOffset;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CustomerSpendUseCaseTest extends BaseIntegrationTest {
 
@@ -36,8 +36,8 @@ class CustomerSpendUseCaseTest extends BaseIntegrationTest {
         var result = spendUseCase.spend(request);
         assertEquals(
             OperationResult.Status.OK,
-            result.status(),
-            result.message()
+            result.getStatus(),
+            result.getMessage()
         );
 
         var actual = repository.findById(request.customerId()).orElseThrow();

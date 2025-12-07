@@ -9,6 +9,7 @@ import ru.nikskul.customer.audit.customer.usecase.change.name._itf.CustomerChang
 import ru.nikskul.customer.audit.customer.usecase.create._itf.CustomerCreateUseCase;
 import ru.nikskul.customer.audit.customer.usecase.search._itf.CustomerSearchUseCase;
 import ru.nikskul.customer.audit.customer.usecase.spend._itf.CustomerSpendUseCase;
+import ru.nikskul.customer.audit.customer.usecase.update._itf.CustomerUpdateUseCase;
 import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
 import ru.nikskul.customer.audit.search.params.impl.SearchParams;
 import ru.nikskul.customer.audit.spend.request.impl.SpendRequest;
@@ -20,17 +21,20 @@ public class SimpleCustomerService
     implements CustomerService, CustomerSpendService {
 
     private final CustomerCreateUseCase createUseCase;
+    private final CustomerUpdateUseCase updateUseCase;
     private final CustomerSearchUseCase searchUseCase;
     private final CustomerChangeNameUseCase changeNameUseCase;
     private final CustomerSpendUseCase spendUseCase;
 
     public SimpleCustomerService(
-        CustomerCreateUseCase createUseCase,
-        CustomerSearchUseCase searchUseCase,
-        CustomerChangeNameUseCase changeNameUseCase,
-        CustomerSpendUseCase spendUseCase
+            CustomerCreateUseCase createUseCase,
+            CustomerUpdateUseCase updateUseCase,
+            CustomerSearchUseCase searchUseCase,
+            CustomerChangeNameUseCase changeNameUseCase,
+            CustomerSpendUseCase spendUseCase
     ) {
         this.createUseCase = createUseCase;
+        this.updateUseCase = updateUseCase;
         this.searchUseCase = searchUseCase;
         this.changeNameUseCase = changeNameUseCase;
         this.spendUseCase = spendUseCase;
@@ -39,6 +43,11 @@ public class SimpleCustomerService
     @Override
     public OperationResult create(CustomerDto customer) {
         return createUseCase.exec(customer);
+    }
+
+    @Override
+    public OperationResult update(CustomerDto customer) {
+        return updateUseCase.exec(customer);
     }
 
     @Override

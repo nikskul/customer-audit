@@ -10,6 +10,7 @@ import java.util.List;
 public interface CustomerService {
 
     OperationResult create(CustomerDto customer);
+    OperationResult update(CustomerDto customer);
     List<CustomerDto> listCustomer(SearchParams<CustomerFilter> searchParams);
     OperationResult changeName(CustomerDto customer);
 }

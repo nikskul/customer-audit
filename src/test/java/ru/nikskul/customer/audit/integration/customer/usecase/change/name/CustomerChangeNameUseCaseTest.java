@@ -1,7 +1,5 @@
 package ru.nikskul.customer.audit.integration.customer.usecase.change.name;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,8 @@ import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
 
 import java.time.Instant;
 import java.time.ZoneOffset;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class CustomerChangeNameUseCaseTest extends BaseIntegrationTest {
@@ -39,8 +39,8 @@ class CustomerChangeNameUseCaseTest extends BaseIntegrationTest {
         var result = changeNameUseCase.exec(expected);
         assertEquals(
             OperationResult.Status.OK,
-            result.status(),
-            result.message()
+            result.getStatus(),
+            result.getMessage()
         );
 
         var actual = repository.findById(expected.id()).orElseThrow();

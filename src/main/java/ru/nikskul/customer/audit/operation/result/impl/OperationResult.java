@@ -26,11 +26,11 @@ public class OperationResult {
 
     public enum Status {OK, ERROR}
 
-    public Status status() {
+    public Status getStatus() {
         return status;
     }
 
-    public String message() {
+    public String getMessage() {
         return message;
     }
 

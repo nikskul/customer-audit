@@ -1,12 +1,7 @@
 package ru.nikskul.customer.audit.customer.controller.impl;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.nikskul.customer.audit.customer.dto.impl.CustomerDto;
 import ru.nikskul.customer.audit.customer.filter.CustomerFilter;
 import ru.nikskul.customer.audit.customer.service._itf.CustomerService;
@@ -36,6 +31,11 @@ public class CustomerController {
     @PostMapping
     public OperationResult create(@RequestBody CustomerDto customer) {
         return service.create(customer);
+    }
+
+    @PutMapping
+    public OperationResult update(@RequestBody CustomerDto customer) {
+        return service.update(customer);
     }
 
     @PatchMapping("/change-full-name")

@@ -1,7 +1,5 @@
 package ru.nikskul.customer.audit.integration.customer.usecase.create;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,8 @@ import ru.nikskul.customer.audit.customer.repository._itf.CustomerRepository;
 import ru.nikskul.customer.audit.customer.usecase.create._itf.CustomerCreateUseCase;
 import ru.nikskul.customer.audit.integration.customer.usecase._itf.BaseIntegrationTest;
 import ru.nikskul.customer.audit.operation.result.impl.OperationResult;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class CustomerCreateUseCaseIntegrationTest extends BaseIntegrationTest {
@@ -30,7 +30,7 @@ public class CustomerCreateUseCaseIntegrationTest extends BaseIntegrationTest {
         );
 
         var result = createUseCase.exec(dto);
-        assertEquals(OperationResult.Status.OK, result.status(), result.message());
+        assertEquals(OperationResult.Status.OK, result.getStatus(), result.getMessage());
 
         var actual = repository.findById(result.id()).orElseThrow();
         SoftAssertions.assertSoftly(softAssertions -> {
