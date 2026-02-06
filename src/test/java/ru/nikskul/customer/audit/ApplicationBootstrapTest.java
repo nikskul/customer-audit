@@ -1,7 +1,7 @@
 package ru.nikskul.customer.audit;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -10,12 +10,15 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
     properties = {"spring.profiles.active=test"}
 )
 public class ApplicationBootstrapTest {
 
+    private static final Logger log = LogManager.getLogger(ApplicationBootstrapTest.class);
     static PostgreSQLContainer<?> postgres =
         new PostgreSQLContainer<>("postgres:16-alpine")
             .withDatabaseName("test-db")
@@ -25,6 +28,7 @@ public class ApplicationBootstrapTest {
     @BeforeAll
     static void beforeAll() {
         postgres.start();
+        log.info("Postgres container started: {}", postgres.getJdbcUrl());
     }
 
     @AfterAll

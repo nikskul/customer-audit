@@ -1,10 +1,13 @@
 plugins {
     id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'ru.nikskul.customer.audit.ApplicationBootstrap'
 }
 
 group = 'ru.nikskul.customer.audit'
-version = '1.0-SNAPSHOT'
-
 
 repositories {
     mavenCentral()
@@ -28,6 +31,7 @@ dependencies {
 
     testImplementation(libs.spring.boot.test)
     testImplementation(libs.testcontainers)
+    testImplementation(libs.testcontainers.psql)
     testImplementation(libs.junit.jupiter)
     testRuntimeOnly(libs.junit.platform.launcher)
 }

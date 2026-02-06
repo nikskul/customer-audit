@@ -35,14 +35,39 @@ left to right direction
 
 ' таблица
 !function $table($tableName) !return "entity " + $tableName + " << (T, white) >>"
+!function $view($tableName) !return "entity " + $tableName + " << (V, lightblue) >>"
 
 
 $table(customer) {
-    $column( $primary_key_name(id), "bigint", "Identity" )
-    $column( $plain_name("full_name", true), "text", "Customer name" )
-    $column( $plain_name(phone, true), "text", "Customer phone number" )
-    $column( $plain_name(spent, true), "numeric(18,2)", "Amount of spend" )
+    $column( $primary_key_name(id), "bigint", "identity" )
+    $column( $plain_name("full_name", true), "text", "customer name" )
+    $column( $plain_name(phone, true), "text", "customer phone number" )
+
+    $column( $plain_name(version, true), "integer", "version" )
+    $column( $plain_name(created_at, true), "timestamp", "creation time" )
+    $column( $plain_name(updated_at), "timestamp", "updating time" )
 }
+
+$table(customer_spent_history) {
+    $column( $primary_key_name(id), "bigint", "identity" )
+    $column( $foreign_key_name(customer_id, true), "bigint", "customer Identity" )
+    $column( $plain_name(amount, true), "numeric(18,2)", "amount" )
+    $column( $plain_name(spend_timestamp, true), "timestamp", "spend timestamp" )
+
+    $column( $plain_name(version, true), "integer", "version" )
+    $column( $plain_name(created_at, true), "timestamp", "creation time" )
+    $column( $plain_name(updated_at), "timestamp", "updating time" )
+}
+
+$view(customer_view) {
+    $column( $primary_key_name(id), "bigint", "customer id" )
+    $column( $plain_name("full_name"), "text", "customer name" )
+    $column( $plain_name(phone), "text", "customer phone number" )
+    $column( $plain_name(spent), "numeric(18,2)", "sum of customer spend" )
+}
+
+' customer
+customer ||--o{ customer_spent_history
 
 
 

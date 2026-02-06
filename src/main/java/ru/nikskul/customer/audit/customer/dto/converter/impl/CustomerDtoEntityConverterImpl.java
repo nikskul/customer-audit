@@ -15,7 +15,6 @@ public class CustomerDtoEntityConverterImpl
         result.setId(dto.id());
         result.setFullName(dto.fullName());
         result.setPhone(dto.phone());
-        result.setSpent(dto.spent());
         return result;
     }
 
