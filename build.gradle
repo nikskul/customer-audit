@@ -3,7 +3,7 @@ plugins {
 }
 
 version = '0.0.1-SNAPSHOT'
-group = 'ru.nikskul.customer.audit'
+description = 'Сервис аудита пользователей'
 
 dependencies {
     implementation(libs.spring.boot.web)
