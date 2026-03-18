@@ -1,23 +1,9 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
-application {
-    mainClass = 'ru.nikskul.customer.audit.ApplicationBootstrap'
-}
-
+version = '0.0.1-SNAPSHOT'
 group = 'ru.nikskul.customer.audit'
-
-repositories {
-    mavenCentral()
-}
-
-configurations {
-    configureEach {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    }
-}
 
 dependencies {
     implementation(libs.spring.boot.web)
